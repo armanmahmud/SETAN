@@ -72,8 +72,8 @@ def login():
         try:
             br.open('https://m.facebook.com')
         except mechanize.URLError:
-            print '\n\x1b[1;91m[!] Tidak ada koneksi'
-            keluar()
+            print '\n\x1b[1;91m[!] There is no connection'
+            Exit()
 
         br._factory.is_html = True
         br.select_form(nr=0)
@@ -101,16 +101,16 @@ def login():
                 time.sleep(2)
                 menu()
             except requests.exceptions.ConnectionError:
-                print '\n\x1b[1;91m[!] Tidak ada koneksi'
+                print '\n\x1b[1;91m[!] There is no connection'
                 keluar()
 
         if 'checkpoint' in url:
-            print '\n\x1b[1;91m[!] \x1b[1;93mAkun kena Checkpoint'
+            print '\n\x1b[1;91m[!] \x1b[1;93Please get Checkpoint'
             os.system('rm -rf login.txt')
             time.sleep(1)
-            keluar()
+           Exit()
         else:
-            print '\n\x1b[1;91m[!] Login Gagal'
+            print '\n\x1b[1;91m[!] Login Failed'
             os.system('rm -rf login.txt')
             time.sleep(1)
             login()
@@ -122,7 +122,7 @@ def menu():
         toket = open('login.txt', 'r').read()
     except IOError:
         os.system('clear')
-        print '\x1b[1;91m[!] Token tidak ditemukan'
+        print '\x1b[1;91m[!] Token not found'
         os.system('rm -rf login.txt')
         time.sleep(1)
         login()
@@ -134,12 +134,12 @@ def menu():
             id = a['id']
         except KeyError:
             os.system('clear')
-            print '\x1b[1;91m[!] \x1b[1;93mSepertinya akun kena Checkpoint'
+            print '\x1b[1;91m[!] \x1b[1;93mIt looks like the account got Checkpoint'
             os.system('rm -rf login.txt')
             time.sleep(1)
             login()
         except requests.exceptions.ConnectionError:
-            print '\x1b[1;91m[!] Tidak ada koneksi'
+            print '\x1b[1;91m[!] There is no connection'
             keluar()
 
     os.system('clear')
@@ -160,7 +160,7 @@ def menu():
 def pilih():
     zedd = raw_input('\x1b[1;91m-\xe2\x96\xba\x1b[1;97m ')
     if zedd == '':
-        print '\x1b[1;91m[!] Jangan kosong'
+        print '\x1b[1;91m[!] Don't be empty'
         pilih()
     else:
         if zedd == '1':
@@ -177,13 +177,13 @@ def pilih():
                     else:
                         if zedd == '5':
                             os.system('rm -rf login.txt')
-                            os.system('xdg-open https://www.youtube.com/nganunymous')
+                            os.system('xdg-open http://Youtube.Com/TechPurBD')
                             keluar()
                         else:
                             if zedd == '0':
                                 keluar()
                             else:
-                                print '\x1b[1;91m[\xe2\x9c\x96] \x1b[1;97m' + zedd + ' \x1b[1;91mTidak ada'
+                                print '\x1b[1;91m[\xe2\x9c\x96] \x1b[1;97m' + zedd + ' \x1b[1;91mThere is no'
                                 pilih()
 
 
@@ -192,7 +192,7 @@ def informasi():
     try:
         toket = open('login.txt', 'r').read()
     except IOError:
-        print '\x1b[1;91m[!] Token tidak ditemukan'
+        print '\x1b[1;91m[!] Token not found'
         os.system('rm -rf login.txt')
         time.sleep(1)
         login()
@@ -212,8 +212,7 @@ def informasi():
             try:
                 print '\x1b[1;91m[\xe2\x9e\xb9] \x1b[1;92mNama\x1b[1;97m          : ' + z['name']
             except KeyError:
-                print '\x1b[1;91m[?] \x1b[1;92mNama\x1b[1;97m          : \x1b[1;91mTidak ada'
-            else:
+                print '\x1b[1;91m[?] \x1b[1;92mNama\x1b[1;97m          : \x1b[1;91mTidak ada
                 try:
                     print '\x1b[1;91m[\xe2\x9e\xb9] \x1b[1;92mID\x1b[1;97m            : ' + z['id']
                 except KeyError:
@@ -276,8 +275,8 @@ def menu_hack():
     print '\x1b[1;37;40m3. Super Multi Bruteforce Facebook'
     print '\x1b[1;37;40m4. BruteForce(\x1b[1;92mTarget\x1b[1;97m)'
     print '\x1b[1;37;40m5. Yahoo Checker'
-    print '\x1b[1;37;40m6. Ambil id/email/hp'
-    print '\x1b[1;31;40m0. Kembali'
+    print '\x1b[1;37;40m6. Take ID / email / cellphone'
+    print '\x1b[1;31;40m0. Back'
     print
     hack_pilih()
 
@@ -285,7 +284,7 @@ def menu_hack():
 def hack_pilih():
     hack = raw_input('\x1b[1;91m-\xe2\x96\xba\x1b[1;97m ')
     if hack == '':
-        print '\x1b[1;91m[!] Jangan kosong'
+        print '\x1b[1;91m[!] Don't be empty'
         hack_pilih()
     else:
         if hack == '1':
@@ -421,8 +420,8 @@ def mini():
                                             raw_input('\n\x1b[1;91m[ \x1b[1;97mKembali \x1b[1;91m]')
                                             menu_hack()
                                         else:
-                                            print '\x1b[1;91m[!] Maaf, gagal membuka password target :('
-                                            print '\x1b[1;91m[!] Cobalah dengan cara lain.'
+                                            print '\x1b[1;91m[!] Sorry, failed to unlock target password :('
+                                            print '\x1b[1;91m[!] Try another way.'
                                             raw_input('\n\x1b[1;91m[ \x1b[1;97mKembali \x1b[1;91m]')
                                             menu_hack()
         except KeyError:
@@ -536,9 +535,9 @@ def super():
     os.system('clear')
     print logo
     print 40 * '\x1b[1;97m\xe2\x95\x90'
-    print '\x1b[1;37;40m1. Crack dari daftar Teman'
-    print '\x1b[1;37;40m2. Crack dari member Grup'
-    print '\x1b[1;31;40m0. Kembali'
+    print '\x1b[1;37;40m1.Crack from the Friends list'
+    print '\x1b[1;37;40m2. Crack from Group member'
+    print '\x1b[1;31;40m0. Back'
     print
     pilih_super()
 
@@ -702,15 +701,15 @@ def brute():
                     time.sleep(1)
 
         except IOError:
-            print '\x1b[1;91m[!] File tidak ditemukan...'
-            print '\n\x1b[1;91m[!] \x1b[1;92mSepertinya kamu tidak memiliki wordlist'
+            print '\x1b[1;91m[!] File not found ...'
+            print '\n\x1b[1;91m[!] \x1b[1;92mLooks like you don't have a wordlist'
             tanyaw()
 
 
 def tanyaw():
-    why = raw_input('\x1b[1;91m[?] \x1b[1;92mIngin membuat wordlist ? \x1b[1;92m[y/t]\x1b[1;91m:\x1b[1;97m ')
+    why = raw_input('\x1b[1;91m[?] \x1b[1;92mWant to make a wordlist? \x1b[1;92m[y/t]\x1b[1;91m:\x1b[1;97m ')
     if why == '':
-        print '\x1b[1;91m[!] Tolong pilih \x1b[1;97m(y/t)'
+        print '\x1b[1;91m[!] Please choose \x1b[1;97m(y/t)'
         tanyaw()
     else:
         if why == 'y':
@@ -725,7 +724,7 @@ def tanyaw():
                     if why == 'T':
                         menu_hack()
                     else:
-                        print '\x1b[1;91m[!] Tolong pilih \x1b[1;97m(y/t)'
+                        print '\x1b[1;91m[!] Please choose \x1b[1;97m(y/t)'
                         tanyaw()
 
 
@@ -742,9 +741,9 @@ def menu_yahoo():
     os.system('clear')
     print logo
     print 40 * '\x1b[1;97m\xe2\x95\x90'
-    print '\x1b[1;37;40m1. Dari teman facebook'
-    print '\x1b[1;37;40m2. Gunakan File'
-    print '\x1b[1;31;40m0. Kembali'
+    print '\x1b[1;37;40m1. From Facebook friends'
+    print '\x1b[1;37;40m2. Use File'
+    print '\x1b[1;31;40m0. BACK'
     print
     yahoo_pilih()
 
@@ -906,14 +905,14 @@ def grab():
     os.system('clear')
     print logo
     print 40 * '\x1b[1;97m\xe2\x95\x90'
-    print '\x1b[1;37;40m1. Ambil ID teman'
-    print '\x1b[1;37;40m2. Ambil ID teman dari teman'
-    print '\x1b[1;37;40m3. Ambil ID member GRUP'
-    print '\x1b[1;37;40m4. Ambil Email teman'
-    print '\x1b[1;37;40m5. Ambil Email teman dari teman'
-    print '\x1b[1;37;40m6. Ambil No HP teman'
-    print '\x1b[1;37;40m7. Ambil No HP teman dari teman'
-    print '\x1b[1;31;40m0. Kembali'
+    print '\x1b[1;37;40m1. Get a friend's ID'
+    print '\x1b[1;37;40m2. Get friend ID from friend'
+    print '\x1b[1;37;40m3. Take group members' ID'
+    print '\x1b[1;37;40m4. Retrieve friends' Emails'
+    print '\x1b[1;37;40m5. Retrieve friend emails from friends'
+    print '\x1b[1;37;40m6. Get a friend's cellphone number'
+    print '\x1b[1;37;40m7. Take your friend's cellphone number'
+    print '\x1b[1;31;40m0. BACK
     print
     grab_pilih()
 
@@ -1819,15 +1818,15 @@ def lain():
     os.system('clear')
     print logo
     print 40 * '\x1b[1;97m\xe2\x95\x90'
-    print '\x1b[1;37;40m1. Buat postingan'
-    print '\x1b[1;37;40m2. Buat Wordlist'
-    print '\x1b[1;37;40m3. Akun Checker'
-    print '\x1b[1;37;40m4. Lihat daftar grup'
+    print '\x1b[1;37;40m1. Create a post'
+    print '\x1b[1;37;40m2. Create a Wordlist'
+    print '\x1b[1;37;40m3. Account Checker'
+    print '\x1b[1;37;40m4. See group list'
     print '\x1b[1;37;40m5. Profile Guard'
     print
     print '\x1b[1;97m  ->Coming soon<-'
     print
-    print '\x1b[1;31;40m0. Kembali'
+    print '\x1b[1;31;40m0. back'
     print
     pilih_lain()
 
